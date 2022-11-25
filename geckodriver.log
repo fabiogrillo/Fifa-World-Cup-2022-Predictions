@@ -123,19 +123,20 @@ WebDriver BiDi listening on ws://127.0.0.1:53095
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Fabio\\AppData\\Local\\Temp\\rust_mozprofileZZ19jr\\search.json.mozlz4", (void 0)))
 DevTools listening on ws://127.0.0.1:53095/devtools/browser/291c7e5e-672c-4b50-9977-1dcd67acfed8
 JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
-1:53562
-1669330164068	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "53563" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Fabio\\AppData\\Local\\Temp\\rust_mozprofile63k08C"
-1669330164283	Marionette	INFO	Marionette enabled
-1669330164286	Marionette	INFO	Listening on port 53572
-WebDriver BiDi listening on ws://127.0.0.1:53563
+1669332876205	Marionette	INFO	Stopped listening on port 53116
+[Parent 17648, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+[Parent 17648, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+0.1:53563
 Read port: 53572
 1669330164469	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Fabio\\AppData\\Local\\Temp\\rust_mozprofile63k08C\\search.json.mozlz4", (void 0)))
 DevTools listening on ws://127.0.0.1:53563/devtools/browser/ac50c1bd-172e-4b41-98e3-01e0163f9181
 JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
-1:55258
-1669330759773	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55259" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Fabio\\AppData\\Local\\Temp\\rust_mozprofile3etzDL"
-1669330760032	Marionette	INFO	Marionette enabled
+1669332874080	Marionette	INFO	Stopped listening on port 53572
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+[Parent 11088, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+tte	INFO	Marionette enabled
 1669330760035	Marionette	INFO	Listening on port 55273
 WebDriver BiDi listening on ws://127.0.0.1:55259
 Read port: 55273
