@@ -1,6 +1,7 @@
 import pandas as pd
 import pickle
 from scipy.stats import poisson
+from colorama import Fore, Style
 
 dict_table = pickle.load(open('./Data/dict_table','rb'))
 df_historical_data = pd.read_csv('./Data/clean_fifa_worldcup_matches.csv')
@@ -64,8 +65,28 @@ for group in dict_table:
     teams_in_group = dict_table[group]['Team'].values
     df_fixture_group_6 = df_fixture_group_48[df_fixture_group_48['home'].isin(teams_in_group)]
     for index, row in df_fixture_group_6.iterrows():
+        points_home = 0
+        points_away = 0
         home, away = row['home'], row['away']
-        points_home, points_away = predict_points(home, away)
+        # print(home, away)
+        # print(df_fixture.loc[index, 'score'].startswith("Match"))
+        # if not df_fixture.loc[index, 'score'].startswith("Match"):
+        #    print(df_fixture.loc[index, 'score'].split("–")[0])
+        #    print(df_fixture.loc[index, 'score'].split("–")[1])
+
+        if df_fixture.loc[index, 'score'].startswith("Match"):
+            points_home, points_away = predict_points(home, away)
+        else:
+            hm = df_fixture.loc[index, 'score'].split("–")[0]
+            aw = df_fixture.loc[index, 'score'].split("–")[1]
+
+            if hm == aw:
+                points_home = 1
+                points_away = 1
+            elif hm > aw:
+                points_home = 3
+            else:
+                points_away = 3
 
 
         dict_table[group].loc[dict_table[group]['Team'] == home, 'Pts'] += points_home
@@ -75,7 +96,7 @@ for group in dict_table:
     dict_table[group] = dict_table[group][['Team', 'Pts']]
     dict_table[group] = dict_table[group].round(0)
 
-print(dict_table['Group A'])
+print(dict_table['Group F'])
 print(df_fixture_knockout)
 
 # Now we predict the knockout stage
@@ -139,4 +160,6 @@ print(df_fixture_final)
 print("\n")
 
 # print(df_fixture_final.loc[63, "winner"])
-print(f'The Winner of the World up 2022 is: {df_fixture_final.loc[63, "winner"]}')
+winner = df_fixture_final.loc[63, "winner"]
+print("The Winner of the World up 2022 is:\n")
+print(f'{Fore.GREEN}{winner}{Style.RESET_ALL}')
