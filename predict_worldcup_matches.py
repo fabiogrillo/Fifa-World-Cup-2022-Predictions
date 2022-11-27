@@ -74,3 +74,69 @@ for group in dict_table:
     dict_table[group] = dict_table[group].sort_values('Pts', ascending=False).reset_index()
     dict_table[group] = dict_table[group][['Team', 'Pts']]
     dict_table[group] = dict_table[group].round(0)
+
+print(dict_table['Group A'])
+print(df_fixture_knockout)
+
+# Now we predict the knockout stage
+
+for group in dict_table:
+    group_winner = dict_table[group].loc[0, 'Team']
+    runners_up = dict_table[group].loc[1, 'Team']
+    df_fixture_knockout.replace({f'Winners {group}': group_winner,
+                                 f'Runners-up {group}': runners_up}, inplace=True)
+df_fixture_knockout['winner'] = '?'
+print(df_fixture_knockout)
+
+def get_winner(df_fixture_updated):
+    for index, row in df_fixture_updated.iterrows():
+        home, away = row['home'], row['away']
+        points_home, points_away = predict_points(home, away)
+        if points_home > points_away:
+            winner = home
+        else:
+            winner = away
+        df_fixture_updated.loc[index, 'winner'] = winner
+    return  df_fixture_updated
+
+get_winner(df_fixture_knockout)
+print(df_fixture_knockout)
+
+# Quarter final
+def update_talbe(df_fixture_round_1, df_fixture_round_2):
+    for index, row in df_fixture_round_1.iterrows():
+        winner = df_fixture_round_1.loc[index, 'winner']
+        match = df_fixture_round_1.loc[index, 'score']
+        df_fixture_round_2.replace({f'Winners {match}': winner}, inplace=True)
+    df_fixture_round_2['winner'] = '?'
+    return df_fixture_round_2
+
+update_talbe(df_fixture_knockout, df_fixture_quarter)
+print(df_fixture_quarter)
+print("\n")
+
+get_winner(df_fixture_quarter)
+print(df_fixture_quarter)
+print("\n")
+
+
+#Semifinal
+update_talbe(df_fixture_quarter, df_fixture_semi)
+print(df_fixture_semi)
+print("\n")
+
+get_winner(df_fixture_semi)
+print(df_fixture_semi)
+print("\n")
+
+#Final
+update_talbe(df_fixture_semi, df_fixture_final)
+print(df_fixture_final)
+print("\n")
+
+get_winner(df_fixture_final)
+print(df_fixture_final)
+print("\n")
+
+# print(df_fixture_final.loc[63, "winner"])
+print(f'The Winner of the World up 2022 is: {df_fixture_final.loc[63, "winner"]}')

@@ -191,3 +191,13 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 DevTools listening on ws://127.0.0.1:51226/devtools/browser/f1fd2687-8424-43c6-be1e-4b864181420a
 1669483531273	Marionette	INFO	Stopped listening on port 51237
 [Parent 23332, IPC I/O Parent] WARNING: DuplicateHandle failed for handle 0 in TransferHandles: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:746
+1669565302847	geckodriver	INFO	Listening on 127.0.0.1:50969
+1669565305909	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "50970" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Fabio\\AppData\\Local\\Temp\\rust_mozprofiletDaKDO"
+1669565306104	Marionette	INFO	Marionette enabled
+1669565306107	Marionette	INFO	Listening on port 50981
+Read port: 50981
+WebDriver BiDi listening on ws://127.0.0.1:50970
+1669565306176	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Fabio\\AppData\\Local\\Temp\\rust_mozprofiletDaKDO\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50970/devtools/browser/6dfa1895-6f61-4248-90fd-5d0bd954836c
+1669565363067	Marionette	INFO	Stopped listening on port 50981

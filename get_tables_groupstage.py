@@ -12,6 +12,8 @@ dict_talbe = {}
 for letter, i in zip(alphabet, range(13, 69, 7)):
     df = all_tables[i]
     df.rename(columns={df.columns[1]: 'Team'}, inplace=True)
+    # because of tables updates on wiki we slightly change the code
+    df[['Pld', 'W', 'D', 'L', 'GF', 'GA', 'GD', 'Pts']] = 0
     df.pop('Qualification')
     dict_talbe[f'Group {letter}'] = df
 
